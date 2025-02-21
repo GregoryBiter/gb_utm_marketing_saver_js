@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовая форма для UTM меток</title>
+    <script src="./src/utm.js"></script>
+</head>
+<body>
+    <h1>Test UTM Form</h1>
+    <form id="utmForm">
+        <label for="utm_source">UTM Source:</label>
+        <input type="text" id="utm_source" name="utm_source"><br><br>
+        
+        <label for="utm_medium">UTM Medium:</label>
+        <input type="text" id="utm_medium" name="utm_medium"><br><br>
+        
+        <label for="utm_campaign">UTM Campaign:</label>
+        <input type="text" id="utm_campaign" name="utm_campaign"><br><br>
+        
+        <label for="utm_term">UTM Term:</label>
+        <input type="text" id="utm_term" name="utm_term"><br><br>
+        
+        <label for="utm_content">UTM Content:</label>
+        <input type="text" id="utm_content" name="utm_content"><br><br>
+        
+        <button type="button" onclick="submitUtmForm()">Отправить</button>
+    </form>
+
+    <script>
+        function submitUtmForm() {
+            const form = document.getElementById('utmForm');
+            const params = new URLSearchParams(new FormData(form)).toString();
+            const url = window.location.origin + window.location.pathname + '?' + params;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
